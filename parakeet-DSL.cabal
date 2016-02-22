@@ -19,3 +19,5 @@ executable parakeet-DSL
                      , transformers
                      , mtl
                      , containers
+                     , parsec
+                     , template-haskell

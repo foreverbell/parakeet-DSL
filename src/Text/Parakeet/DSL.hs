@@ -6,6 +6,7 @@ module Text.Parakeet.DSL (
 , (#)
 , h, k, lit, kanji, eol
 
+, t
 , a, i, u, e, o
 , ka, ki, ku, ke, ko
 , ga, gi, gu, ge, go
@@ -32,7 +33,6 @@ module Text.Parakeet.DSL (
 , pya, pyu, pyo
 , mya, myu, myo
 , rya, ryu, ryo
-
 ) where
 
 import Prelude hiding (pi)
@@ -42,14 +42,20 @@ import Control.Monad (void)
 
 import Text.Parakeet.Primitive
 
+class LexemeArg a where
+  formatArg :: a -> Lexeme ()
+
+instance (b ~ Lexeme a) => LexemeArg b where
+  formatArg = void
+
 class LexemeType r where
   lexemeFold :: Lexeme a -> r
 
 instance (a ~ ()) => LexemeType (Lexeme a) where
-  lexemeFold = void 
+  lexemeFold = void
 
-instance (b ~ Lexeme a, LexemeType r) => LexemeType (b -> r) where
-  lexemeFold ls = \l -> lexemeFold (ls >> l)
+instance (LexemeArg b, LexemeType r) => LexemeType (b -> r) where
+  lexemeFold ls = \l -> lexemeFold (ls >> formatArg l)
 
 class IsR r where
   toR :: String -> r
@@ -77,6 +83,9 @@ k l = liftF $ Katakana (SomeLexeme l) ()
 
 eol :: Lexeme ()
 eol = liftF $ EOL ()
+
+t :: IsR r => r
+t = toR "t"
 
 a :: IsR r => r
 a = toR "a"

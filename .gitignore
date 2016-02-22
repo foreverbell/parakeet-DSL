@@ -4,3 +4,9 @@ stack.yaml
 
 # vim
 *swp
+
+# xelatex
+*.aux
+*.log
+*.tex
+*.pdf

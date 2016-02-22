@@ -1,4 +1,4 @@
-module Text.Parakeet.Linguistics ( 
+module Text.Parakeet.Linguistics (
   hiraganaMap
 , katakanaMap
 ) where
@@ -33,7 +33,8 @@ hiraganaMap = M.fromList $ map swap [
   ("びゃ", "bya"), ("びゅ", "byu"), ("びょ", "byo"),
   ("ぴゃ", "pya"), ("ぴゅ", "pyu"), ("ぴょ", "pyo"), 
   ("みゃ", "mya"), ("みゅ", "myu"), ("みょ", "myo"), 
-  ("りゃ", "rya"), ("りゅ", "ryu"), ("りょ", "ryo") ]
+  ("りゃ", "rya"), ("りゅ", "ryu"), ("りょ", "ryo"),
+  ("っ", "t") ]
 
 katakanaMap = M.fromList $ map swap [
   ("ア", "a"), ("イ", "i"), ("ウ", "u"), ("エ", "e"), ("オ", "o"),
@@ -61,4 +62,5 @@ katakanaMap = M.fromList $ map swap [
   ("ビャ", "bya"), ("ビュ", "byu"), ("ビョ", "byo"),
   ("ピャ", "pya"), ("ピュ", "pyu"), ("ピョ", "pyo"), 
   ("ミャ", "mya"), ("ミュ", "myu"), ("ミョ", "myo"), 
-  ("リャ", "rya"), ("リュ", "ryu"), ("リョ", "ryo") ]
+  ("リャ", "rya"), ("リュ", "ryu"), ("リョ", "ryo"),
+  ("ッ", "t") ]
