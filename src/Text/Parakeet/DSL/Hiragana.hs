@@ -26,6 +26,7 @@ module Text.Parakeet.DSL.Hiragana (
 , mya, myu, myo
 , rya, ryu, ryo
 , t
+, wa_
 ) where
 
 import Prelude hiding (pi)
@@ -345,3 +346,7 @@ ryo = toR "ryo" "りょ"
 
 t :: IsR r => r
 t = toR "t" "っ"
+
+-- | Particles mutation
+wa_ :: IsR r => r
+wa_ = toR "wa" "は"
