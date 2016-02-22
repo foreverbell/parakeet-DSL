@@ -6,14 +6,14 @@ import Text.Parakeet.DSL
 import Text.Parakeet.Render (tex)
 import Text.Parakeet.QuasiEmbedFile
 
-wow5 = l "wow wow～"
-stay = l "Stay"
-onMyLove = l "On my love"
-
 main :: IO ()
 main = putStrLn $ concat [efile|template.tex|]
 
 body = tex $ do
+
+  let wow5 = l "wow wow～"
+  let stay = l "Stay"
+  let onMyLove = l "On my love"
 
   (#) go' ki' ge' n' na (k "蝶" cho u) ni na t te (<|>) ki ra me ku (k "風" ka ze) ni (k "乗" no) t te eol
   (#) (k "今" i ma) su gu (<|>) ki' mi' ni (k "会" a) i ni (k "行" yu) ko u eol
