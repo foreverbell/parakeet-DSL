@@ -4,33 +4,17 @@ module Text.Parakeet.Render (
 
 import           Control.Monad.Free (runFreeM)
 import           Control.Monad.Writer
-import           Control.Monad.State
 import           Data.List (intercalate)
-import           Data.Maybe (fromJust)
-import qualified Data.Map as M
 import           Text.Printf (printf)
 import           Text.Parakeet.Primitive
-import           Text.Parakeet.Linguistics
 
-data Furigana = HiraganaF | KatakanaF
-
-type Render = WriterT String (State Furigana)
-
-translate :: Furigana -> String -> String
-translate furigana r = fromJust $ case furigana of
-  HiraganaF -> M.lookup r hiraganaMap
-  KatakanaF -> M.lookup r katakanaMap
+type Render = Writer String
 
 tex :: Lexeme a -> String
-tex = eval HiraganaF
+tex l = execWriter (runFreeM render l)
   where
-    eval :: Furigana -> Lexeme a -> String
-    eval furigana l = evalState (execWriterT (runFreeM render l)) furigana
-
     render :: LexemeF a -> Render a
-    render (Romaji r ctx) = do
-      furigana <- get
-      let k = translate furigana r
+    render (Romaji r k ctx) = do
       tell $ printf "\\ruby{\\large{%s}}{\\normalsize{%s}} " k r
       return ctx
 
@@ -39,19 +23,9 @@ tex = eval HiraganaF
       return ctx
 
     render (Kanji k rs' ctx) = do
-      furigana <- get
-      let unwrap (LitR r) = r
-      let rs = map unwrap rs'
-      let ks = map (translate furigana) rs
+      let unwrap (LitR r k) = (r, k)
+      let (rs, ks) = unzip $ map unwrap rs'
       tell $ printf "\\ruby{\\large{%s}\\small{(%s)}}{\\normalsize{%s}} " k (concat ks) (intercalate " " rs)
-      return ctx
-
-    render (Hiragana (SomeLexeme l) ctx) = do
-      tell $ eval HiraganaF l
-      return ctx
-
-    render (Katakana (SomeLexeme l) ctx) = do
-      tell $ eval KatakanaF l
       return ctx
 
     render (EOL ctx) = do

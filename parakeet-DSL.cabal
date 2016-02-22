@@ -18,6 +18,5 @@ executable parakeet-DSL
   build-depends:       base >= 4.8 && < 5
                      , transformers
                      , mtl
-                     , containers
                      , parsec
                      , template-haskell
