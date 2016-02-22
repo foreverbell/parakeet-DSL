@@ -4,7 +4,7 @@
 module Text.Parakeet.DSL ( 
   Lexeme
 , (#)
-, lit, kanji
+, l, k
 , eol, whitespace, (<|>)
 , module Text.Parakeet.DSL.Hiragana
 , module Text.Parakeet.DSL.Katakana
@@ -46,17 +46,17 @@ instance (a ~ LitR, KanjiType r) => KanjiType (a -> r) where
 (#) :: (LexemeType r) => Lexeme () -> r
 (#) = lexemeFold
 
-lit :: String -> Lexeme ()
-lit l = liftF $ Lit l ()
+l :: String -> Lexeme ()
+l li = liftF $ Lit li ()
 
-kanji :: (KanjiType r) => String -> r
-kanji k = kanjiFold k []
+k :: (KanjiType r) => String -> r
+k ka = kanjiFold ka []
 
 eol :: Lexeme ()
 eol = liftF $ EOL ()
 
 whitespace :: Lexeme ()
-whitespace = lit " "
+whitespace = l " "
 
 (<|>) :: Lexeme ()
 (<|>) = whitespace

@@ -20,3 +20,11 @@ executable parakeet-DSL
                      , mtl
                      , parsec
                      , template-haskell
+  other-modules:
+    Control.Monad.Free
+    Text.Parakeet.DSL
+    Text.Parakeet.DSL.Hiragana
+    Text.Parakeet.DSL.Katakana
+    Text.Parakeet.Primitive
+    Text.Parakeet.QuasiEmbedFile
+    Text.Parakeet.Render
