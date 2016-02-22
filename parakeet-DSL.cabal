@@ -1,0 +1,21 @@
+name:                parakeet-DSL
+version:             0.1.0.0
+homepage:            http://github.com/foreverbell/parakeet-DSL
+license:             BSD3
+license-file:        LICENSE
+author:              foreverbell
+maintainer:          dql.foreverbell@gmail.com
+copyright:           2016 foreverbell
+category:            Text
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable parakeet-DSL
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  ghc-options:         -W -fwarn-tabs
+  build-depends:       base >= 4.8 && < 5
+                     , transformers
+                     , mtl
+                     , containers

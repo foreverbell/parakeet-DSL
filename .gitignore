@@ -1,0 +1,6 @@
+# stack
+stack.yaml
+.stack-work/
+
+# vim
+*swp
