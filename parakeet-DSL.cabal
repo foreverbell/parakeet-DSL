@@ -1,7 +1,7 @@
 name:                parakeet-DSL
 version:             0.1.0.0
 homepage:            http://github.com/foreverbell/parakeet-DSL
-license:             BSD3
+license:             MIT
 license-file:        LICENSE
 author:              foreverbell
 maintainer:          dql.foreverbell@gmail.com
