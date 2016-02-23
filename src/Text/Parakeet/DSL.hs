@@ -38,22 +38,22 @@ class KanjiType r where
   kanjiFold :: String -> [LitR] -> r
 
 instance (a ~ ()) => KanjiType (Lexeme a) where
-  kanjiFold k rs = liftF $ Kanji k (reverse rs) ()
+  kanjiFold k rs = Lexeme $ liftF $ Kanji k (reverse rs) ()
 
 instance (a ~ LitR, KanjiType r) => KanjiType (a -> r) where
   kanjiFold k rs = \r -> kanjiFold k (r:rs)
 
-(#) :: (LexemeType r) => Lexeme () -> r
-(#) = lexemeFold
+(#) :: (LexemeType r) => r
+(#) = lexemeFold (return ())
 
 l :: String -> Lexeme ()
-l li = liftF $ Lit li ()
+l li = Lexeme $ liftF $ Lit li ()
 
 k :: (KanjiType r) => String -> r
 k ka = kanjiFold ka []
 
 eol :: Lexeme ()
-eol = liftF $ EOL ()
+eol = Lexeme $ liftF $ EOL ()
 
 whitespace :: Lexeme ()
 whitespace = l " "

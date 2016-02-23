@@ -11,7 +11,7 @@ import           Text.Parakeet.Primitive
 type Render = Writer String
 
 tex :: Lexeme a -> String
-tex l = execWriter (runFreeM render l)
+tex (Lexeme l) = execWriter (runFreeM render l)
   where
     render :: LexemeF a -> Render a
     render (Romaji r k ctx) = do

@@ -1,10 +1,11 @@
 {-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE FlexibleInstances #-}
 
 module Text.Parakeet.Primitive ( 
   LexemeF (..)
-, Lexeme
+, Lexeme (..)
 , LitR (..)
 , IsR (..)
 ) where
@@ -18,7 +19,8 @@ data LexemeF a
   | EOL a
   deriving (Functor)
 
-type Lexeme = Free LexemeF
+newtype Lexeme a = Lexeme (Free LexemeF a)
+  deriving (Functor, Applicative, Monad)
 
 data LitR = LitR String String
 
@@ -26,7 +28,7 @@ class IsR r where
   toR :: String -> String -> r
 
 instance (a ~ ()) => IsR (Lexeme a) where
-  toR r k = liftF $ Romaji r k ()
+  toR r k = Lexeme $ liftF $ Romaji r k ()
 
 instance IsR LitR where
   toR r k = LitR r k

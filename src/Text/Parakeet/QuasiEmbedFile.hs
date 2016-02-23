@@ -13,7 +13,6 @@ type Parser a = Parsec String () a
 data Chunk 
   = Lit String
   | Value String
-  deriving (Show, Eq)
 
 templateParser :: Parser [Chunk]
 templateParser = mergeLit <$> manyTill (lit <|> dollar <|> value) eof 
