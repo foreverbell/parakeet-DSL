@@ -16,8 +16,8 @@ For a concrete example, see [here](https://raw.githubusercontent.com/foreverbell
 
 ## Technique tricks
 
-* Ships a implementation of free monad (Control.Monad.Free) to write DSL in a monadic context.
-* `(#) :: (LexemeType r) => r` is a polyvariadic operator. By putting it at the foremost of one line, you can directly write romajis like `(#) a ri ga to` in a fantastic way. Similarly, kanji operator `k` uses the same trick.
+* Ships an implementation of free monad (Control.Monad.Free) to write DSL in a monadic context.
+* `(#) :: (LexemeType r) => r` is a polyvariadic operator. By putting it at the foremost of one line, you can directly write romajis like `(#) a ri ga to u` in a fantastic way. Similarly, kanji operator `k` uses the same trick.
 * All romajis are polymorphic, they could be monadic values, or pure `LitR` values when used after `k` operator. Consequently, code likes `k "test" (a >> e)` is malformed, and won't typecheck.
 
 ## Have a try!
