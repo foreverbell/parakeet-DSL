@@ -1,5 +1,7 @@
+{-# LANGUAGE QuasiQuotes, OverloadedStrings #-}
+
 module Text.Parakeet.Render ( 
-  tex
+  renderTex
 ) where
 
 import           Control.Monad.Free (runFreeM)
@@ -7,12 +9,15 @@ import           Control.Monad.Writer
 import           Data.List (intercalate)
 import           Text.Printf (printf)
 import           Text.Parakeet.Primitive
+import           Text.Parakeet.QuasiEmbedFile (efile)
 
 type Render = Writer String
 
-tex :: Lexeme a -> String
-tex (Lexeme l) = execWriter (runFreeM render l)
+renderTex :: Lexeme a -> String
+renderTex (Lexeme l) = concat [efile|template.tex|] 
   where
+    body = execWriter (runFreeM render l)
+
     render :: LexemeF a -> Render a
     render (Romaji r k ctx) = do
       tell $ printf "\\ruby{\\large{%s}}{\\normalsize{%s}} " k r

@@ -1,5 +1,4 @@
-{-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeFamilies, FlexibleInstances #-}
 
 module Text.Parakeet.DSL ( 
   Lexeme

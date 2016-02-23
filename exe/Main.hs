@@ -1,15 +1,10 @@
-{-# LANGUAGE QuasiQuotes, OverloadedStrings #-}
-
 module Main where
 
 import Text.Parakeet.DSL
-import Text.Parakeet.Render (tex)
-import Text.Parakeet.QuasiEmbedFile
+import Text.Parakeet.Render (renderTex)
 
 main :: IO ()
-main = putStrLn $ concat [efile|template.tex|]
-
-body = tex $ do
+main = putStrLn $ renderTex $ do
 
   let wow5 = l "wow wow～"
   let stay = l "Stay"
