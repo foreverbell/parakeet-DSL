@@ -4,12 +4,12 @@ module Text.Parakeet.Render (
   renderTex
 ) where
 
-import           Control.Monad.Free (runFreeM)
-import           Control.Monad.Writer
-import           Data.List (intercalate)
-import           Text.Printf (printf)
-import           Text.Parakeet.Primitive
-import           Text.Parakeet.QuasiEmbedFile (efile)
+import Control.Monad.Free (runFreeM)
+import Control.Monad.Writer
+import Data.List (intercalate)
+import Text.Printf (printf)
+import Text.Parakeet.Primitive
+import Text.Parakeet.QuasiEmbedFile (efile)
 
 type Render = Writer String
 

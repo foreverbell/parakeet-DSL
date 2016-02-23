@@ -1,5 +1,3 @@
-module Main where
-
 import Text.Parakeet.DSL
 import Text.Parakeet.Render (renderTex)
 
