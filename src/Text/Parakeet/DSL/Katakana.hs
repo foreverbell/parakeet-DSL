@@ -25,322 +25,347 @@ module Text.Parakeet.DSL.Katakana (
 , pya', pyu', pyo'
 , mya', myu', myo'
 , rya', ryu', ryo'
-, t'
+, k', t', p', s'
+, a_, i_, u_, e_, o_
 ) where
 
 import Text.Parakeet.Primitive
 
-a' :: IsR r => r
-a' = toR "a" "ア"
+a' :: IsKana r => r
+a' = toKana "a" "ア"
 
-i' :: IsR r => r
-i' = toR "i" "イ"
+i' :: IsKana r => r
+i' = toKana "i" "イ"
 
-u' :: IsR r => r
-u' = toR "u" "ウ"
+u' :: IsKana r => r
+u' = toKana "u" "ウ"
 
-e' :: IsR r => r
-e' = toR "e" "エ"
+e' :: IsKana r => r
+e' = toKana "e" "エ"
 
-o' :: IsR r => r
-o' = toR "o" "オ"
+o' :: IsKana r => r
+o' = toKana "o" "オ"
 
-ka' :: IsR r => r
-ka' = toR "ka" "カ"
+ka' :: IsKana r => r
+ka' = toKana "ka" "カ"
 
-ki' :: IsR r => r
-ki' = toR "ki" "キ"
+ki' :: IsKana r => r
+ki' = toKana "ki" "キ"
 
-ku' :: IsR r => r
-ku' = toR "ku" "ク"
+ku' :: IsKana r => r
+ku' = toKana "ku" "ク"
 
-ke' :: IsR r => r
-ke' = toR "ke" "ケ"
+ke' :: IsKana r => r
+ke' = toKana "ke" "ケ"
 
-ko' :: IsR r => r
-ko' = toR "ko" "コ"
+ko' :: IsKana r => r
+ko' = toKana "ko" "コ"
 
-ga' :: IsR r => r
-ga' = toR "ga" "ガ"
+ga' :: IsKana r => r
+ga' = toKana "ga" "ガ"
 
-gi' :: IsR r => r
-gi' = toR "gi" "ギ"
+gi' :: IsKana r => r
+gi' = toKana "gi" "ギ"
 
-gu' :: IsR r => r
-gu' = toR "gu" "グ"
+gu' :: IsKana r => r
+gu' = toKana "gu" "グ"
 
-ge' :: IsR r => r
-ge' = toR "ge" "ゲ"
+ge' :: IsKana r => r
+ge' = toKana "ge" "ゲ"
 
-go' :: IsR r => r
-go' = toR "go" "ゴ"
+go' :: IsKana r => r
+go' = toKana "go" "ゴ"
 
-sa' :: IsR r => r
-sa' = toR "sa" "サ"
+sa' :: IsKana r => r
+sa' = toKana "sa" "サ"
 
-shi' :: IsR r => r
-shi' = toR "shi" "シ"
+shi' :: IsKana r => r
+shi' = toKana "shi" "シ"
 
-su' :: IsR r => r
-su' = toR "su" "ス"
+su' :: IsKana r => r
+su' = toKana "su" "ス"
 
-se' :: IsR r => r
-se' = toR "se" "セ"
+se' :: IsKana r => r
+se' = toKana "se" "セ"
 
-so' :: IsR r => r
-so' = toR "so" "ソ"
+so' :: IsKana r => r
+so' = toKana "so" "ソ"
 
-za' :: IsR r => r
-za' = toR "za" "ザ"
+za' :: IsKana r => r
+za' = toKana "za" "ザ"
 
-ji' :: IsR r => r
-ji' = toR "ji" "ジ"
+ji' :: IsKana r => r
+ji' = toKana "ji" "ジ"
 
-zu' :: IsR r => r
-zu' = toR "zu" "ズ"
+zu' :: IsKana r => r
+zu' = toKana "zu" "ズ"
 
-ze' :: IsR r => r
-ze' = toR "ze" "ゼ"
+ze' :: IsKana r => r
+ze' = toKana "ze" "ゼ"
 
-zo' :: IsR r => r
-zo' = toR "zo" "ゾ"
+zo' :: IsKana r => r
+zo' = toKana "zo" "ゾ"
 
-ta' :: IsR r => r
-ta' = toR "ta" "タ"
+ta' :: IsKana r => r
+ta' = toKana "ta" "タ"
 
-chi' :: IsR r => r
-chi' = toR "chi" "チ"
+chi' :: IsKana r => r
+chi' = toKana "chi" "チ"
 
-tsu' :: IsR r => r
-tsu' = toR "tsu" "ツ"
+tsu' :: IsKana r => r
+tsu' = toKana "tsu" "ツ"
 
-te' :: IsR r => r
-te' = toR "te" "テ"
+te' :: IsKana r => r
+te' = toKana "te" "テ"
 
-to' :: IsR r => r
-to' = toR "to" "ト"
+to' :: IsKana r => r
+to' = toKana "to" "ト"
 
-da' :: IsR r => r
-da' = toR "da" "ダ"
+da' :: IsKana r => r
+da' = toKana "da" "ダ"
 
-di' :: IsR r => r
-di' = toR "di" "ヂ"
+di' :: IsKana r => r
+di' = toKana "di" "ヂ"
 
-du' :: IsR r => r
-du' = toR "du" "ヅ"
+du' :: IsKana r => r
+du' = toKana "du" "ヅ"
 
-de' :: IsR r => r
-de' = toR "de" "デ"
+de' :: IsKana r => r
+de' = toKana "de" "デ"
 
-d0' :: IsR r => r
-d0' = toR "do" "ド"
+d0' :: IsKana r => r
+d0' = toKana "do" "ド"
 
-na' :: IsR r => r
-na' = toR "na" "ナ"
+na' :: IsKana r => r
+na' = toKana "na" "ナ"
 
-ni' :: IsR r => r
-ni' = toR "ni" "ニ"
+ni' :: IsKana r => r
+ni' = toKana "ni" "ニ"
 
-nu' :: IsR r => r
-nu' = toR "nu" "ヌ"
+nu' :: IsKana r => r
+nu' = toKana "nu" "ヌ"
 
-ne' :: IsR r => r
-ne' = toR "ne" "ネ"
+ne' :: IsKana r => r
+ne' = toKana "ne" "ネ"
 
-no' :: IsR r => r
-no' = toR "no" "ノ"
+no' :: IsKana r => r
+no' = toKana "no" "ノ"
 
-ha' :: IsR r => r
-ha' = toR "ha" "ハ"
+ha' :: IsKana r => r
+ha' = toKana "ha" "ハ"
 
-hi' :: IsR r => r
-hi' = toR "hi" "ヒ"
+hi' :: IsKana r => r
+hi' = toKana "hi" "ヒ"
 
-fu' :: IsR r => r
-fu' = toR "fu" "フ"
+fu' :: IsKana r => r
+fu' = toKana "fu" "フ"
 
-he' :: IsR r => r
-he' = toR "he" "ヘ"
+he' :: IsKana r => r
+he' = toKana "he" "ヘ"
 
-ho' :: IsR r => r
-ho' = toR "ho" "ホ"
+ho' :: IsKana r => r
+ho' = toKana "ho" "ホ"
 
-ba' :: IsR r => r
-ba' = toR "ba" "バ"
+ba' :: IsKana r => r
+ba' = toKana "ba" "バ"
 
-bi' :: IsR r => r
-bi' = toR "bi" "ビ"
+bi' :: IsKana r => r
+bi' = toKana "bi" "ビ"
 
-bu' :: IsR r => r
-bu' = toR "bu" "ブ"
+bu' :: IsKana r => r
+bu' = toKana "bu" "ブ"
 
-be' :: IsR r => r
-be' = toR "be" "ベ"
+be' :: IsKana r => r
+be' = toKana "be" "ベ"
 
-bo' :: IsR r => r
-bo' = toR "bo" "ボ"
+bo' :: IsKana r => r
+bo' = toKana "bo" "ボ"
 
-pa' :: IsR r => r
-pa' = toR "pa" "パ"
+pa' :: IsKana r => r
+pa' = toKana "pa" "パ"
 
-pi' :: IsR r => r
-pi' = toR "pi" "ピ"
+pi' :: IsKana r => r
+pi' = toKana "pi" "ピ"
 
-pu' :: IsR r => r
-pu' = toR "pu" "プ"
+pu' :: IsKana r => r
+pu' = toKana "pu" "プ"
 
-pe' :: IsR r => r
-pe' = toR "pe" "ペ"
+pe' :: IsKana r => r
+pe' = toKana "pe" "ペ"
 
-po' :: IsR r => r
-po' = toR "po" "ポ"
+po' :: IsKana r => r
+po' = toKana "po" "ポ"
 
-ma' :: IsR r => r
-ma' = toR "ma" "マ"
+ma' :: IsKana r => r
+ma' = toKana "ma" "マ"
 
-mi' :: IsR r => r
-mi' = toR "mi" "ミ"
+mi' :: IsKana r => r
+mi' = toKana "mi" "ミ"
 
-mu' :: IsR r => r
-mu' = toR "mu" "ム"
+mu' :: IsKana r => r
+mu' = toKana "mu" "ム"
 
-me' :: IsR r => r
-me' = toR "me" "メ"
+me' :: IsKana r => r
+me' = toKana "me" "メ"
 
-mo' :: IsR r => r
-mo' = toR "mo" "モ"
+mo' :: IsKana r => r
+mo' = toKana "mo" "モ"
 
-ya' :: IsR r => r
-ya' = toR "ya" "ヤ"
+ya' :: IsKana r => r
+ya' = toKana "ya" "ヤ"
 
-yu' :: IsR r => r
-yu' = toR "yu" "ユ"
+yu' :: IsKana r => r
+yu' = toKana "yu" "ユ"
 
-yo' :: IsR r => r
-yo' = toR "yo" "ヨ"
+yo' :: IsKana r => r
+yo' = toKana "yo" "ヨ"
 
-ra' :: IsR r => r
-ra' = toR "ra" "ラ"
+ra' :: IsKana r => r
+ra' = toKana "ra" "ラ"
 
-ri' :: IsR r => r
-ri' = toR "ri" "リ"
+ri' :: IsKana r => r
+ri' = toKana "ri" "リ"
 
-ru' :: IsR r => r
-ru' = toR "ru" "ル"
+ru' :: IsKana r => r
+ru' = toKana "ru" "ル"
 
-re' :: IsR r => r
-re' = toR "re" "レ"
+re' :: IsKana r => r
+re' = toKana "re" "レ"
 
-ro' :: IsR r => r
-ro' = toR "ro" "ロ"
+ro' :: IsKana r => r
+ro' = toKana "ro" "ロ"
 
-wa' :: IsR r => r
-wa' = toR "wa" "ワ"
+wa' :: IsKana r => r
+wa' = toKana "wa" "ワ"
 
-wo' :: IsR r => r
-wo' = toR "wo" "ヲ"
+wo' :: IsKana r => r
+wo' = toKana "wo" "ヲ"
 
-n' :: IsR r => r
-n' = toR "n" "ン"
+n' :: IsKana r => r
+n' = toKana "n" "ン"
 
-kya' :: IsR r => r
-kya' = toR "kya" "キャ"
+kya' :: IsKana r => r
+kya' = toKana "kya" "キャ"
 
-kyu' :: IsR r => r
-kyu' = toR "kyu" "キュ"
+kyu' :: IsKana r => r
+kyu' = toKana "kyu" "キュ"
 
-kyo' :: IsR r => r
-kyo' = toR "kyo" "キョ"
+kyo' :: IsKana r => r
+kyo' = toKana "kyo" "キョ"
 
-gya' :: IsR r => r
-gya' = toR "gya" "ギャ"
+gya' :: IsKana r => r
+gya' = toKana "gya" "ギャ"
 
-gyu' :: IsR r => r
-gyu' = toR "gyu" "ギュ"
+gyu' :: IsKana r => r
+gyu' = toKana "gyu" "ギュ"
 
-gyo' :: IsR r => r
-gyo' = toR "gyo" "ギョ"
+gyo' :: IsKana r => r
+gyo' = toKana "gyo" "ギョ"
 
-sha' :: IsR r => r
-sha' = toR "sha" "シャ"
+sha' :: IsKana r => r
+sha' = toKana "sha" "シャ"
 
-shu' :: IsR r => r
-shu' = toR "shu" "シュ"
+shu' :: IsKana r => r
+shu' = toKana "shu" "シュ"
 
-sho' :: IsR r => r
-sho' = toR "sho" "ショ"
+sho' :: IsKana r => r
+sho' = toKana "sho" "ショ"
 
-ja' :: IsR r => r
-ja' = toR "ja" "ジャ"
+ja' :: IsKana r => r
+ja' = toKana "ja" "ジャ"
 
-ju' :: IsR r => r
-ju' = toR "ju" "ジュ"
+ju' :: IsKana r => r
+ju' = toKana "ju" "ジュ"
 
-jo' :: IsR r => r
-jo' = toR "jo" "ジョ"
+jo' :: IsKana r => r
+jo' = toKana "jo" "ジョ"
 
-cha' :: IsR r => r
-cha' = toR "cha" "チャ"
+cha' :: IsKana r => r
+cha' = toKana "cha" "チャ"
 
-chu' :: IsR r => r
-chu' = toR "chu" "チュ"
+chu' :: IsKana r => r
+chu' = toKana "chu" "チュ"
 
-cho' :: IsR r => r
-cho' = toR "cho" "チョ"
+cho' :: IsKana r => r
+cho' = toKana "cho" "チョ"
 
-nya' :: IsR r => r
-nya' = toR "nya" "ニャ"
+nya' :: IsKana r => r
+nya' = toKana "nya" "ニャ"
 
-nyu' :: IsR r => r
-nyu' = toR "nyu" "ニュ"
+nyu' :: IsKana r => r
+nyu' = toKana "nyu" "ニュ"
 
-nyo' :: IsR r => r
-nyo' = toR "nyo" "ニョ"
+nyo' :: IsKana r => r
+nyo' = toKana "nyo" "ニョ"
 
-hya' :: IsR r => r
-hya' = toR "hya" "ヒャ"
+hya' :: IsKana r => r
+hya' = toKana "hya" "ヒャ"
 
-hyu' :: IsR r => r
-hyu' = toR "hyu" "ヒュ"
+hyu' :: IsKana r => r
+hyu' = toKana "hyu" "ヒュ"
 
-hyo' :: IsR r => r
-hyo' = toR "hyo" "ヒョ"
+hyo' :: IsKana r => r
+hyo' = toKana "hyo" "ヒョ"
 
-bya' :: IsR r => r
-bya' = toR "bya" "ビャ"
+bya' :: IsKana r => r
+bya' = toKana "bya" "ビャ"
 
-byu' :: IsR r => r
-byu' = toR "byu" "ビュ"
+byu' :: IsKana r => r
+byu' = toKana "byu" "ビュ"
 
-byo' :: IsR r => r
-byo' = toR "byo" "ビョ"
+byo' :: IsKana r => r
+byo' = toKana "byo" "ビョ"
 
-pya' :: IsR r => r
-pya' = toR "pya" "ピャ"
+pya' :: IsKana r => r
+pya' = toKana "pya" "ピャ"
 
-pyu' :: IsR r => r
-pyu' = toR "pyu" "ピュ"
+pyu' :: IsKana r => r
+pyu' = toKana "pyu" "ピュ"
 
-pyo' :: IsR r => r
-pyo' = toR "pyo" "ピョ"
+pyo' :: IsKana r => r
+pyo' = toKana "pyo" "ピョ"
 
-mya' :: IsR r => r
-mya' = toR "mya" "ミャ"
+mya' :: IsKana r => r
+mya' = toKana "mya" "ミャ"
 
-myu' :: IsR r => r
-myu' = toR "myu" "ミュ"
+myu' :: IsKana r => r
+myu' = toKana "myu" "ミュ"
 
-myo' :: IsR r => r
-myo' = toR "myo" "ミョ"
+myo' :: IsKana r => r
+myo' = toKana "myo" "ミョ"
 
-rya' :: IsR r => r
-rya' = toR "rya" "リャ"
+rya' :: IsKana r => r
+rya' = toKana "rya" "リャ"
 
-ryu' :: IsR r => r
-ryu' = toR "ryu" "リュ"
+ryu' :: IsKana r => r
+ryu' = toKana "ryu" "リュ"
 
-ryo' :: IsR r => r
-ryo' = toR "ryo" "リョ"
+ryo' :: IsKana r => r
+ryo' = toKana "ryo" "リョ"
 
-t' :: IsR r => r
-t' = toR "t" "ッ"
+k' :: IsKana r => r
+k' = toKana "k" "ッ"
+
+t' :: IsKana r => r
+t' = toKana "t" "ッ"
+
+p' :: IsKana r => r
+p' = toKana "p" "ッ"
+
+s' :: IsKana r => r
+s' = toKana "s" "ッ"
+
+a_ :: IsKana r => r
+a_ = toKana "a" "ー"
+
+i_ :: IsKana r => r
+i_ = toKana "i" "ー"
+
+u_ :: IsKana r => r
+u_ = toKana "u" "ー"
+
+e_ :: IsKana r => r
+e_ = toKana "e" "ー"
+
+o_ :: IsKana r => r
+o_ = toKana "o" "ー"

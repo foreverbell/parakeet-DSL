@@ -3,8 +3,9 @@
 module Text.Parakeet.DSL ( 
   Lexeme
 , (#)
-, l, k
-, eol, whitespace, (<|>)
+, lit, kan
+, eol, (\\\)
+, whitespace, (|||)
 , module Text.Parakeet.DSL.Hiragana
 , module Text.Parakeet.DSL.Katakana
 ) where
@@ -34,28 +35,31 @@ instance (LexemeArg b, LexemeType r) => LexemeType (b -> r) where
   lexemeFold ls = \l -> lexemeFold (ls >> formatArg l)
 
 class KanjiType r where
-  kanjiFold :: String -> [LitR] -> r
+  kanjiFold :: String -> [LitKana] -> r
 
 instance (a ~ ()) => KanjiType (Lexeme a) where
   kanjiFold k rs = Lexeme $ liftF $ Kanji k (reverse rs) ()
 
-instance (a ~ LitR, KanjiType r) => KanjiType (a -> r) where
+instance (a ~ LitKana, KanjiType r) => KanjiType (a -> r) where
   kanjiFold k rs = \r -> kanjiFold k (r:rs)
 
 (#) :: (LexemeType r) => r
 (#) = lexemeFold (return ())
 
-l :: String -> Lexeme ()
-l li = Lexeme $ liftF $ Lit li ()
+lit :: String -> Lexeme ()
+lit l = Lexeme $ liftF $ Lit l ()
 
-k :: (KanjiType r) => String -> r
-k ka = kanjiFold ka []
+kan :: (KanjiType r) => String -> r
+kan k = kanjiFold k []
 
 eol :: Lexeme ()
 eol = Lexeme $ liftF $ EOL ()
 
-whitespace :: Lexeme ()
-whitespace = l " "
+(\\\) :: Lexeme ()
+(\\\) = eol
 
-(<|>) :: Lexeme ()
-(<|>) = whitespace
+whitespace :: Lexeme ()
+whitespace = lit " "
+
+(|||) :: Lexeme ()
+(|||) = whitespace

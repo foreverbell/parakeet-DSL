@@ -19,7 +19,7 @@ renderTex (Lexeme l) = concat [efile|template.tex|]
     body = execWriter (runFreeM render l)
 
     render :: LexemeF a -> Render a
-    render (Romaji r k ctx) = do
+    render (Kana r k ctx) = do
       tell $ printf "\\ruby{\\large{%s}}{\\normalsize{%s}} " k r
       return ctx
 
@@ -28,7 +28,7 @@ renderTex (Lexeme l) = concat [efile|template.tex|]
       return ctx
 
     render (Kanji k rs' ctx) = do
-      let unwrap (LitR r k) = (r, k)
+      let unwrap (LitKana r k) = (r, k)
       let (rs, ks) = unzip $ map unwrap rs'
       tell $ printf "\\ruby{\\large{%s}\\small{(%s)}}{\\normalsize{%s}} " k (concat ks) (intercalate " " rs)
       return ctx

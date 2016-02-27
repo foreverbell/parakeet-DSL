@@ -4,29 +4,29 @@
 module Text.Parakeet.Primitive ( 
   LexemeF (..)
 , Lexeme (..)
-, LitR (..)
-, IsR (..)
+, LitKana (..)
+, IsKana (..)
 ) where
 
 import Control.Monad.Free (Free, liftF)
 
 data LexemeF a 
-  = Romaji String String a
+  = Kana String String a
   | Lit String a
-  | Kanji String [LitR] a
+  | Kanji String [LitKana] a
   | EOL a
   deriving (Functor)
 
 newtype Lexeme a = Lexeme (Free LexemeF a)
   deriving (Functor, Applicative, Monad)
 
-data LitR = LitR String String
+data LitKana = LitKana String String
 
-class IsR r where
-  toR :: String -> String -> r
+class IsKana r where
+  toKana :: String -> String -> r
 
-instance (a ~ ()) => IsR (Lexeme a) where
-  toR r k = Lexeme $ liftF $ Romaji r k ()
+instance (a ~ ()) => IsKana (Lexeme a) where
+  toKana r k = Lexeme $ liftF $ Kana r k ()
 
-instance IsR LitR where
-  toR r k = LitR r k
+instance IsKana LitKana where
+  toKana r k = LitKana r k
