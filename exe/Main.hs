@@ -56,5 +56,5 @@ main = putStrLn $ renderTex $ do
 
   (#) (\\\)
 
-  p2
+  (#) p2
 
